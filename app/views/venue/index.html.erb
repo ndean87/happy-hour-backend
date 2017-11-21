@@ -1,0 +1,14 @@
+<div class="happy-hour-venue">
+
+  <h2>Specials!</h2>
+  <% @venues.each do |venue| %>
+    <p><%= venue.venue_name %></p>
+    <p><%= venue.address %></p>
+  <% end %>
+  <% @specials.each do |special| %>
+    <p><%= special.day %></p>
+    <p><%= special.special %></p>
+    <p><%= special.time %></p>
+
+  <% end %>
+</div>
