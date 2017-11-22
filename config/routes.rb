@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   resources :special, only: [:new, :create]
   resources :comment, only: [:new, :create]
 
-  root 'venue#index'
+  get '/venues/new', to: 'venues#new'
+  get '/venues', to: 'venues#index'
+  get '/specials', to: 'specials#index'
+
+
+  root 'venues#index'
 end

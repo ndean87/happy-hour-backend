@@ -1,6 +1,6 @@
 class CreateSpecials < ActiveRecord::Migration[5.1]
   def change
-    create_table :specials do |t
+    create_table :specials do |t|
       t.string :day
       t.string :special
       t.string :time
