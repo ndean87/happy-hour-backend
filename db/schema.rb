@@ -10,35 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120224305) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comments", force: :cascade do |t|
-    t.text "comments"
-    t.string "user_name"
-    t.integer "venue_id"
-  end
-
-  create_table "specials", force: :cascade do |t|
-    t.string "day"
-    t.string "special"
-    t.string "time"
-    t.integer "venue_id"
-  end
-
-  create_table "venues", force: :cascade do |t|
-    t.string "venue_name"
-    t.integer "rating"
-    t.string "address"
-    t.string "state"
-    t.string "city"
-    t.integer "zipcode"
-    t.string "phone_number"
-    t.string "neighborhood"
-    t.float "latitude"
-    t.float "longitude"
-  end
 
 end
