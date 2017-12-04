@@ -13,7 +13,10 @@ class VenuesController < ApplicationController
   end
 
   def create
-    @venue = Venue.create(venue_name: params[:venue_name], address: params[:venue_address], state: params[:venue_state], city: params[:venue_city], zipcode: params[:venue_zipcode], phone_number: params[:venue_phone], neighborhood: params[:venue_neighborhood], latitude: params[:latitude], longitude: params[:longitude])
+    new_venue = Venue.create(venue_params)
+    params[:specials].each do |special|
+      new_venue.specials.create(day: special[:day], special: special[:special], time: special[:time])
+    end
   end
 
   def edit
