@@ -26,9 +26,29 @@ class VenuesController < ApplicationController
   def update
     @venue = Venue.find(params[:id])
     @venue.update(venue_params)
-    params[:specials].each do |special|
-      current_special = Special.find_by(id: special[:id])
-      current_special.update(special: special[:special], time: special[:time])
+    venue_specials = @venue.specials
+
+    user_edited_specials = params[:specials].select do |special|
+      !special[:special].empty? || !special[:time].empty?
+    end
+
+    user_edited_specials.each do |special|
+      current_special = venue_specials.where(day: special['day']).first
+      puts "*" * 30
+
+      if current_special
+        puts 'c_spec exists so we update'
+        puts "special['day'] is #{special['day']}"
+        puts "SPECIAL IS: #{current_special.day}"
+        current_special.update(day: special[:day], special: special[:special], time: special[:time])
+      else
+        puts 'in the else, so we create'
+        @venue.specials.create(day: special[:day], special: special[:special], time: special[:time])
+      end
+        puts "*" * 30
+      # current_special = Special.find_by(id: special[:id])
+      # byebug
+      # current_special.update(day: special[:day], special: special[:special], time: special[:time])
     end
     if @venue.save
       render json: @venue

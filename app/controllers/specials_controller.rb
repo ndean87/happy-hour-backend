@@ -31,7 +31,7 @@ class SpecialsController < ApplicationController
   private
 
   def special_params
-    params.require(:special).permit(:special, :time)
+    params.require(:special).permit(:day, :special, :time)
   end
 
 end
