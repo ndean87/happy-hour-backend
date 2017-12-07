@@ -16,6 +16,8 @@ gem 'puma', '~> 3.7'
 gem 'active_model_serializers'
 
 gem 'geocoder'
+
+gem 'seed_dump'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
